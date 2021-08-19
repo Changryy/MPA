@@ -154,7 +154,7 @@ How date and time is formatted in text.
 `threshold` tells the minimum % amount (as a float from 0 to 1) the role has to match the input text
 for the role to be added to the user.  
 So if the `treshold` is `0.8` and the role matches the input text by `81%`, the role will be added to the user.  
-If no role matches the text with a % above the treshold the bot will send the [role question embed](#role-question).
+If no role matches the text with a % above the treshold the bot will send the [role question embed](#role-question-embed).
 
 `algorithm` is a string with text comparison algorithms separated by ` > `.
 ```yaml
