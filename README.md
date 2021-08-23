@@ -20,20 +20,15 @@ Source code of the official Discord-bot of [Music Production Arena](https://musi
   - [Text Comparison](#text-comparison)
   - [Role System](#role-system)
   - [Verification](#verification)
-  - Embeds
-    - [Info](#embeds)
+  - [Embeds](#embeds)
     - [See All](#embed-types)
-  - Messages
-    - [Info](#messages)
+  - [Messages](#messages)
     - [See All](#message-types)
-  - Questions
-    - [Info](#questions)
+  - [Questions](#questions)
     - [See All](#question-types)
-  - Commands
-    - [Info](#commands)
+  - [Commands](#commands)
     - [See All](#command-types)
-  - Errors
-    - [Info](#errors)
+  - [Errors](#errors)
     - [See All](#error-types)
 
 ## Basic YAML Syntax
