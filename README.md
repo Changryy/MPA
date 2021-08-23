@@ -2,6 +2,7 @@
 Source code of the official Discord-bot of [Music Production Arena](https://musicproductionarena.com/)
 
 ## Table of Contents
+- [Dependencies](#dependencies)
 - Basic YAML Syntax
   - [Introduction](#introduction)
   - [Colour](#colour)
@@ -30,6 +31,15 @@ Source code of the official Discord-bot of [Music Production Arena](https://musi
     - [See All](#command-types)
   - [Errors](#errors)
     - [See All](#error-types)
+
+## Dependencies
+Use `pip3 install ` to install the modules.
+- regex
+- requests
+- emoji
+- textdistance
+- python-dotenv
+- ramuel.yaml
 
 ## Basic YAML Syntax
 ### Introduction
