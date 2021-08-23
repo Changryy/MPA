@@ -9,7 +9,7 @@ Source code of the official Discord-bot of [Music Production Arena](https://musi
   - [Text](#text)
   - [Multiline Text](#multiline-text)
   - [Variables](#variables)
-    - [`user`](#the-user-variable)
+    - [user](#the-user-variable)
 - Configuration File Structure
   - [Paths](#paths)
   - [Server ID](#server-id)
@@ -20,11 +20,21 @@ Source code of the official Discord-bot of [Music Production Arena](https://musi
   - [Text Comparison](#text-comparison)
   - [Role System](#role-system)
   - [Verification](#verification)
-  - [Embeds](#embeds)
-  - [Messages](#messages)
-  - [Questions](#questions)
-  - [Commands](#commands)
-  - [Errors](#errors)
+  - Embeds
+    - [Info](#embeds)
+    - [See All](#embed-types)
+  - Messages
+    - [Info](#messages)
+    - [See All](#message-types)
+  - Questions
+    - [Info](#questions)
+    - [See All](#question-types)
+  - Commands
+    - [Info](#commands)
+    - [See All](#command-types)
+  - Errors
+    - [Info](#errors)
+    - [See All](#error-types)
 
 ## Basic YAML Syntax
 ### Introduction
