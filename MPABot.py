@@ -1053,11 +1053,11 @@ async def recieve_link(variables):
     del active_codes[user.id]
     
     # Add MPA Member Role
-    role = discord.utils.get(guild.roles, name="MPA Member") # get MPA Member role
+    role = discord.utils.get(guild.roles, id=621766092498403339) # get MPA Member role
     try: await member.add_roles(role) # add role
     except: pass
     try:
-        member_role = discord.utils.get(guild.roles, name="Member") # get Member role
+        member_role = discord.utils.get(guild.roles, id=763739340051709972) # get Member role
         await member.remove_roles(member_role) # remove member role
     except: pass
 
