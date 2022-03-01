@@ -1,4 +1,4 @@
-VERSION = "3.0.5"
+VERSION = "3.0.8"
 DATA_PATH = "data.yml"
 
 
@@ -869,7 +869,8 @@ class Command:
         if match:
             self.args.clear()
             for i in range(len(arg_pos)):
-                self.args[arg_pos[i]] = match.group(i+1)
+                if match.group(i+1) or (arg_pos[i] not in self.args):
+                    self.args[arg_pos[i]] = match.group(i+1)
             return True
         else: return False
 # ---------- CLASSES ---------- #
@@ -1243,7 +1244,7 @@ async def on_message(message):
         if cmd.is_command("role > create"):
             role = Role(get_role_type(cmd.args[2]))
             role.name = cmd.args[1]
-            if not role.type["name"]: role.name += " as " + cmd.args[2]
+            if not role.type["name"] and cmd.args[2]: role.name += " as " + cmd.args[2]
 
             embed = Embed("role > create", locals())
             await embed.send()
@@ -1307,7 +1308,7 @@ async def on_message(message):
             await FileHandler.save_data()
 
         # ADD TO WHITELIST
-        if cmd.is_command("whitelist > add"):
+        elif cmd.is_command("whitelist > add"):
             for who in message.mentions:
                 if who.id not in whitelist:
                     whitelist.append(who.id)

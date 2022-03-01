@@ -21,35 +21,36 @@ paths:
 
 server id: 621764824417959937
 debug:
-  status: on
+  status: off
   user: 398730959186427916
   update time:
     seconds: 10
 
 whitelist:
 - 398730959186427916
+- 531117440034144278
 channels:
   debug: 621769084152971346
   roles: 621825868888801291
   status: 841266215225655306
 
-date format: "%d %b %Y - %H:%M:%S"
+date format: '%d %b %Y - %H:%M:%S'
 text comparison:
   algorithm: damerau_levenshtein > mra > editex > jaccard > entropy_ncd
   threshold: 0.8
 
 role system:
-  separators: [",", "/", "\n", "(", ")", "[", "]", "{", "}", ":"]
+  separators: [',', /, "\n", (, ), '[', ']', '{', '}', ':']
   finished emoji: 👌
   role types:
-    - name: occupation
-      colour: 0x59717c
-    - name: daw
-      colour: 0x979c9f
-    - name: notation software
-      colour: 0x95a5a6
-    - name: genre
-      colour: 0x71368a
+  - name: occupation
+    colour: 0x59717c
+  - name: daw
+    colour: 0x979c9f
+  - name: notation software
+    colour: 0x95a5a6
+  - name: genre
+    colour: 0x71368a
 
 verification:
   channel id: 621764824417959939
@@ -67,66 +68,66 @@ embeds:
         Could not find any roles with the name `{role[0]}`.
         Did you mean any of these?
       fields:
-        - name: 1️⃣ {role[1].name}
-          value: "{role[1].match}% match"
-          inline: false
-        - name: 2️⃣ {role[2].name}
-          value: "{role[2].match}% match"
-          inline: false
-        - name: 3️⃣ {role[3].name}
-          value: "{role[3].match}% match"
-          inline: false
-        - name: 4️⃣ New Role
-          value: Suggests the role to the mods
-          inline: false
+      - name: 1️⃣ {role[1].name}
+        value: '{role[1].match}% match'
+        inline: false
+      - name: 2️⃣ {role[2].name}
+        value: '{role[2].match}% match'
+        inline: false
+      - name: 3️⃣ {role[3].name}
+        value: '{role[3].match}% match'
+        inline: false
+      - name: 4️⃣ New Role
+        value: Suggests the role to the mods
+        inline: false
       footer:
         text: ❌ Ignore
       buttons:
-        - emoji: 1️⃣
-          function: add role 1
-        - emoji: 2️⃣
-          function: add role 2
-        - emoji: 3️⃣
-          function: add role 3
-        - emoji: 4️⃣
-          function: suggest role
-        - emoji: ❌
-          
+      - emoji: 1️⃣
+        function: add role 1
+      - emoji: 2️⃣
+        function: add role 2
+      - emoji: 3️⃣
+        function: add role 3
+      - emoji: 4️⃣
+        function: suggest role
+      - emoji: ❌
+
     suggestion:
       title: Role suggestion
       color: 0x00abf4
       fields:
-        - name: "{role.type}"
-          value: "{role.name}"
-          inline: false
+      - name: '{role.type}'
+        value: '{role.name}'
+        inline: false
       footer:
-        text: "Suggested by `{user.mention}`"
+        text: Suggested by `{user.mention}`
       buttons:
-        - emoji: ✅
-          function: accept
-        - emoji: ❌
-          function: reject
-        - emoji: ✏️
-          function: change name
+      - emoji: ✅
+        function: accept
+      - emoji: ❌
+        function: reject
+      - emoji: ✏️
+        function: change name
 
     create:
       title: Create Role
-      color: "{role.colour}"
-      description: "{role.name}"
+      color: '{role.colour}'
+      description: '{role.name}'
       footer:
-        text: "{role.type[name]}"
+        text: '{role.type[name]}'
       buttons:
-        - emoji: ✅
-          function: accept
-        - emoji: ❌
-          function: reject
+      - emoji: ✅
+        function: accept
+      - emoji: ❌
+        function: reject
 
     created:
       title: Created Role
       color: 0x00fe00
-      description: "{role.name}"
+      description: '{role.name}'
       footer:
-        text: "{role.type[name]}"
+        text: '{role.type[name]}'
 
   status:
     server:
@@ -142,7 +143,7 @@ embeds:
         **Text Channels:** `{server.text_channel_count}`
         **Voice Channels:** `{server.voice_channel_count}`
       footer:
-        text: "Server ID: {guild.id}"
+        text: 'Server ID: {guild.id}'
 
     bot:
       title: Bot Status
@@ -153,9 +154,9 @@ embeds:
         **Edited:** {time} UTC
         **Verified Users:** `{bot.user_count}`
         **Acquirable Roles:** `{bot.role_count}`
-        
+
       footer:
-        text: "Version: {bot.version}"
+        text: 'Version: {bot.version}'
 
   help:
     role:
@@ -163,7 +164,8 @@ embeds:
       color: 0x00abf4
       description: add role `name` as `type`
       footer:
-        text: Please create roles with this command, or the users wont be able to add them.
+        text: Please create roles with this command, or the users wont be able to
+          add them.
 
     whitelist:
       title: Command List
@@ -172,46 +174,47 @@ embeds:
         Command list for whitelisted users
         Note that fetching and replacing files only works in private messages
       fields:
-        - name: whitelist
-          value: View whitelist
-          inline: false
-        - name: whitelist `user`
-          value: Add a user or multiple users to the whitelist
-          inline: false
-        - name: whitelist remove `user`
-          value: Remove a user or multiple users from the whitelist
-          inline: false
-        - name: server status
-          value: Sends general server info
-          inline: false
-        - name: bot status
-          value: Sends general bot info
-          inline: false
-        - name: update
-          value: Reloads the files. Sorts the roles both by type and alphabetically. Recolours the roles to match the role type colour.
-          inline: false
-        - name: get `filename`
-          value: Get the the specified file. Remember to include the file extension
-          inline: false
-        - name: "*Send a file*"
-          value: Replace a file in the system with a new file
-          inline: false
-        - name: reboot
-          value: Reboots the bot
-          inline: false
-        - name: shutdown
-          value: Shuts the bot down
-          inline: false
+      - name: whitelist
+        value: View whitelist
+        inline: false
+      - name: whitelist `user`
+        value: Add a user or multiple users to the whitelist
+        inline: false
+      - name: whitelist remove `user`
+        value: Remove a user or multiple users from the whitelist
+        inline: false
+      - name: server status
+        value: Sends general server info
+        inline: false
+      - name: bot status
+        value: Sends general bot info
+        inline: false
+      - name: update
+        value: Reloads the files. Sorts the roles both by type and alphabetically.
+          Recolours the roles to match the role type colour.
+        inline: false
+      - name: get `filename`
+        value: Get the the specified file. Remember to include the file extension
+        inline: false
+      - name: '*Send a file*'
+        value: Replace a file in the system with a new file
+        inline: false
+      - name: reboot
+        value: Reboots the bot
+        inline: false
+      - name: shutdown
+        value: Shuts the bot down
+        inline: false
       footer:
-        text: "Available files: {files}"
+        text: 'Available files: {files}'
 
   whitelist:
     title: Whitelist
     color: 0xfefefe
     fields:
-      - name: "{user.display_name}"
-        value: "ID: `{user.id}`"
-        inline: false
+    - name: '{user.display_name}'
+      value: 'ID: `{user.id}`'
+      inline: false
   bot:
     shutdown:
       title: Confirm Shutdown
@@ -221,17 +224,17 @@ embeds:
         Are you sure you want to turn off the bot?
         It cannot be started again through discord.
       buttons:
-        - emoji: ✅
-          function: accept
-        - emoji: ❌
+      - emoji: ✅
+        function: accept
+      - emoji: ❌
 
 
   error:
-    title: "{self.title}"
+    title: '{self.title}'
     color: 0xff0000
-    description: "{self.description}"
+    description: '{self.description}'
     footer:
-      text: "Error {self.id}"
+      text: Error {self.id}
 
 
 messages:
@@ -241,18 +244,19 @@ messages:
 
       You can __verify__ your **MPA membership** by __copying__ the following **verification code** and __pasting__ it
       on the **wall** (not the bio) on your __**Music Production Amino profile**__.
-      
+
       Once you are done with that, please send me the link to your profile so I that can confirm it. 😄
-    send code: "Your **verification code** is:"
-    new code: "Here is your new **verification code** {user.mention}:"
-    completed: Verification complete! You can delete the verification code from your profile now.
+    send code: 'Your **verification code** is:'
+    new code: 'Here is your new **verification code** {user.mention}:'
+    completed: Verification complete! You can delete the verification code from your
+      profile now.
     verified user: Successfully verified `{member.display_name}`!
-  
+
   whitelist:
     remove: Removed `{who.display_name}`
-    remove failed: "`{who.display_name}` is not whitelisted"
+    remove failed: '`{who.display_name}` is not whitelisted'
     add: Whitelisted `{who.display_name}`
-    add failed: "`{who.display_name}` is already whitelisted"
+    add failed: '`{who.display_name}` is already whitelisted'
 
   updated file: Updated `{message_file.filename}`
   changed nick: Changed nickname of user `{user.name}` to `{nickname}`
@@ -265,9 +269,9 @@ messages:
 input messages:
   role:
     change name:
-      message: "Insert new name:"
+      message: 'Insert new name:'
     change type:
-      message: "Insert new type:"
+      message: 'Insert new type:'
 
 
 commands:
@@ -282,7 +286,7 @@ commands:
   whitelist:
     view: whitelist
     add: whitelist $1
-    remove: whitelist rmove $1
+    remove: whitelist remove $1
   file:
     get: get $1
     replace:
@@ -293,69 +297,69 @@ commands:
 
 
 errors:
-  - id: 100
-    title: Failed To Load Dependencies
-    description: Shutting down...
-  - id: 101
-    title: File Not Found
-    description: Could not find $1.
-  - id: 102
-    title: Invalid JSON
-    description: Invalid JSON in file $1.
-  - id: 103
-    title: Invalid YAML
-    description: Invalid YAML in file $1.
-  - id: 104
-    title: Missing Properties
-    description: |-
-      Missing properties in file $1.
-      Failed to load:
-      $2
-  - id: 105
-    title: Invalid Key
-    description: Invalid key $1 in $2.
-  - id: 200
-    title: Verification Code Not Found
-    description: |-
-      Could not find verification code $1 on amino site $2.
-      Make sure to comment the code on your wall, I am not able to find it in your bio.
-      Resend the link once you have fixed it.
-  - id: 201
-    title: No Active Verification Codes
-    description: >-
-      You do not have any active verification codes.
-      Your last code might have expired.
-  - id: 202
-    title: Account Already Synced
-    description: The link $1 has been used before.
-  - id: 203
-    title: Invalid Link
-    description: The link $1 does not lead to any profile.
-  - id: 204
-    title: Invalid Link
-    description: The link $1 does not lead to the Music Production Amino.
-  - id: 205
-    title: Verification Code Not On Wall
-    description: >-
-      Found verification code $1 in link $2, but it was not on the wall.
-      Comment it on your wall, do not put it in your bio.
-      Resend the link once you have fixed it.
-  - id: 206
-    title: Already Verified
-    description: You have already been verified. 👍
-  - id: 207
-    title: Incorrect Account
-    description: >-
-      Account $1 did not match commenter $2.
-      Did you comment the code on your own wall?
-      Resend the link once you have done it.
-  - id: 300 # Not in use
-    title: Role Not Found
-    description: Could not add $1 role $2 to user $3. # Not used
-  - id: 301
-    title: Nickname Too Long
-    description: Could not change the nickname of user $1 to $2.
-  - id: 302 # Not in use
-    title: Invalid Role Type
-    description:
+- id: 100
+  title: Failed To Load Dependencies
+  description: Shutting down...
+- id: 101
+  title: File Not Found
+  description: Could not find $1.
+- id: 102
+  title: Invalid JSON
+  description: Invalid JSON in file $1.
+- id: 103
+  title: Invalid YAML
+  description: Invalid YAML in file $1.
+- id: 104
+  title: Missing Properties
+  description: |-
+    Missing properties in file $1.
+    Failed to load:
+    $2
+- id: 105
+  title: Invalid Key
+  description: Invalid key $1 in $2.
+- id: 200
+  title: Verification Code Not Found
+  description: |-
+    Could not find verification code $1 on amino site $2.
+    Make sure to comment the code on your wall, I am not able to find it in your bio.
+    Resend the link once you have fixed it.
+- id: 201
+  title: No Active Verification Codes
+  description: >-
+    You do not have any active verification codes.
+    Your last code might have expired.
+- id: 202
+  title: Account Already Synced
+  description: The link $1 has been used before.
+- id: 203
+  title: Invalid Link
+  description: The link $1 does not lead to any profile.
+- id: 204
+  title: Invalid Link
+  description: The link $1 does not lead to the Music Production Amino.
+- id: 205
+  title: Verification Code Not On Wall
+  description: >-
+    Found verification code $1 in link $2, but it was not on the wall.
+    Comment it on your wall, do not put it in your bio.
+    Resend the link once you have fixed it.
+- id: 206
+  title: Already Verified
+  description: You have already been verified. 👍
+- id: 207
+  title: Incorrect Account
+  description: >-
+    Account $1 did not match commenter $2.
+    Did you comment the code on your own wall?
+    Resend the link once you have done it.
+- id: 300   # Not in use
+  title: Role Not Found
+  description: Could not add $1 role $2 to user $3.   # Not used
+- id: 301
+  title: Nickname Too Long
+  description: Could not change the nickname of user $1 to $2.
+- id: 302   # Not in use
+  title: Invalid Role Type
+  description:
 
