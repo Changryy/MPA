@@ -1,0 +1,218 @@
+variables:
+  version: "4.0.0"
+  server: Music Production Arena
+
+  red: 0xff0000
+  green: 0x00ff00
+  blue: 0x00abf4
+
+  # Currently not in use, but could be used to display date and time
+  time_format: "%d %b %Y - %H:%M:%S"
+
+  # This one is blank because it is assigned in "on connected"
+  online_since:
+
+
+# The intents the bot needs
+intents:
+- members
+
+
+on user joined:
+- add role: "@Newcomer"
+- wait:
+    time: 1 week
+    do:
+    - update roles:
+        remove: "@Newcomer"
+        add: "@Member"
+
+
+# When the bot has connected to discord
+on connected:
+- set variables:
+    online_since: utcnow()
+    server: await self.get_server(server)
+    evaluate: true
+
+# update message will send a message once,
+# save its id and update it as long as it exists
+- update message:
+    channel: "#roles"
+    content:
+    - text: "**Roles**"
+
+    # Select is a dropdown menu
+    - select:
+        placeholder: Select DAW(s)
+
+        # This is how many options you can select
+        min values: 0
+        max values: 25
+
+        # called when the user has finished selecting
+        on interaction:
+        - update roles:
+            remove: "[x.value for x in options]"
+            add: values
+
+        # The values here can be anything,
+        # but for this we use the roles that will be assigned
+        options:
+        - label: Ableton
+          emoji: 1024240296495689768
+          value: 621826801886429184
+
+        - label: Adobe Audition
+          emoji: 1024240298072744008
+          value: 621827409205002250
+
+        - label: Audacity
+          emoji: 
+          value: 621827648536182824
+
+        - label: Bandlab
+          emoji: 1024240299825971200
+          value: 745781024935510089
+
+        - label: Bitwig Studio
+          emoji: 1024240300828393553
+          value: 621827477953708103
+
+        - label: Cakewalk
+          emoji: 1024295263592009769
+          value: 1082674734690488363
+
+        - label: Cubase
+          emoji: 1024240302497726506
+          value: 621826871059021837
+
+        - label: FL Mobile
+          emoji: 752971381335130122
+          value: 1082646084632989736
+
+        - label: FL Studio
+          emoji: 752971381335130122
+          value: 621826558730174484
+
+        - label: Garage Band
+          emoji: 
+          value: 621827236353540116
+
+        - label: LMMS
+          emoji: 1024251839979458610
+          value: 1082675462993612810
+
+        - label: Logic
+          emoji: 752971448758304808
+          value: 621827374475903004
+
+        - label: Presonus Studio One
+          emoji: 
+          value: 621827053288816651
+
+        - label: Pro Tools
+          emoji: 1024240304037048390
+          value: 621827161774358529
+
+        - label: Reaper
+          emoji: 
+          value: 621827763392741378
+
+        - label: Reason
+          emoji: 
+          value: 621827205160501248
+
+        - label: Sonar Platinum
+          emoji: 
+          value: 733092879412756570
+          
+        - label: Tracktion
+          emoji: 
+          value: 623203369095528471
+          
+        - label: Samplitude
+          emoji: 
+          value: 976374487945723924
+        
+        - label: Other
+          description: Some DAW that no one knows because I'm special
+          emoji: 
+          value: 1082675271787884606
+
+            
+
+    - select:
+        placeholder: Select Notation Software
+
+        min values: 0
+        max values: 25
+        
+        on interaction:
+        - update roles:
+            remove: "[x.value for x in options]"
+            add: values
+
+        options:
+        - label: Dorico
+          emoji: 1024240310634696718
+          value: 622181673961914378
+
+        - label: Finale
+          emoji: 1024240312534712411
+          value: 622190067624181770
+
+        - label: Flat
+          emoji: 
+          value: 733095013738610778
+
+        - label: MuseScore
+          emoji: 1024240313952391189
+          value: 622181458106384423
+          
+        - label: Notion
+          emoji: 
+          value: 720827393379663982
+
+        - label: Sibelius
+          emoji: 1024240315437154304
+          value: 622181501408116736
+          
+
+
+
+
+
+loop:
+  every: 1 min
+  do:
+  - update message:
+      channel: "#status"
+      content:
+      - embed:
+          colour: blue
+          title: Bot Status
+          description: |-
+            **Uptime:** {format_timedelta(utcnow() - online_since, "m")}
+            **Since:** {timestamp(online_since, "D")}
+            **Edited:** {timestamp(utcnow(), "R")}
+          footer: "Version: {version}"
+
+  - update message:
+      channel: "#status"
+      content:
+      - embed:
+          colour: blue
+          title: Server Status
+          description: |-
+            **Owner:** {server.owner.mention}
+            **Created:** {timestamp(server.created_at, "D")}
+            **Members:** `{server.member_count}`
+            **Roles:** `{server.role_count}`
+            **Emojis:** `{server.emoji_count}`
+            **Categories:** `{server.category_count}`
+            **Text Channels:** `{server.text_channel_count}`
+            **Voice Channels:** `{server.voice_channel_count}`
+          footer: "Server ID: {server.id}"
+
+

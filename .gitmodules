@@ -1,0 +1,3 @@
+[submodule "Discord.yaml"]
+	path = Discord.yaml
+	url = git@github.com:xChangryx/Discord.yaml.git
