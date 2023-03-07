@@ -1,13 +1,10 @@
 variables:
   version: "4.0.0"
-  server: Music Production Arena
+  server: 621764824417959937
 
   red: 0xff0000
   green: 0x00ff00
   blue: 0x00abf4
-
-  # Currently not in use, but could be used to display date and time
-  time_format: "%d %b %Y - %H:%M:%S"
 
   # This one is blank because it is assigned in "on connected"
   online_since:
@@ -19,13 +16,13 @@ intents:
 
 
 on user joined:
-- add role: "@Newcomer"
+- add role: 1074869223727308880
 - wait:
     time: 1 week
     do:
     - update roles:
-        remove: "@Newcomer"
-        add: "@Member"
+        remove: 1074869223727308880
+        add: 763739340051709972
 
 
 # When the bot has connected to discord
@@ -38,7 +35,7 @@ on connected:
 # update message will send a message once,
 # save its id and update it as long as it exists
 - update message:
-    channel: "#roles"
+    channel: 621825868888801291
     content:
     - text: "**Roles**"
 
@@ -180,14 +177,11 @@ on connected:
           
 
 
-
-
-
 loop:
   every: 1 min
   do:
   - update message:
-      channel: "#status"
+      channel: 841266215225655306
       content:
       - embed:
           colour: blue
@@ -199,7 +193,7 @@ loop:
           footer: "Version: {version}"
 
   - update message:
-      channel: "#status"
+      channel: 841266215225655306
       content:
       - embed:
           colour: blue
