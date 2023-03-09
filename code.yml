@@ -23,9 +23,8 @@ on user joined:
 - wait:
     time: 1 week
     do:
-    - update roles:
-        remove: 1074869223727308880
-        add: 763739340051709972
+    - remove role: 1074869223727308880
+    - add role: 763739340051709972
 
 
 # When the bot has connected to discord
@@ -40,6 +39,17 @@ on connected:
 - update message:
     channel: 621825868888801291
     content:
+    - embed:
+        title: Here you can assign yourself roles and choose whether you want to receive updates about events
+        description: |-
+          How it works:
+          Simply click on the "Select Roles" button below and choose which roles apply to you from the menu.
+
+          About the "Pro" role:
+          Please only assign this role to yourself if you're an industry professional.
+          *(for example, if music is your main source income)*
+
+
     - button:
         label: Select Roles
         style: blurple
