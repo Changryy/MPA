@@ -77,7 +77,7 @@ on connected:
                   default: self.get_role(value) in user.roles
 
                 - label: Audacity
-                  emoji: 
+                  emoji: 1083416552377950300
                   value: 621827648536182824
                   default: self.get_role(value) in user.roles
 
@@ -112,7 +112,7 @@ on connected:
                   default: self.get_role(value) in user.roles
 
                 - label: Garage Band
-                  emoji: 
+                  emoji: 1083415643753291826
                   value: 621827236353540116
                   default: self.get_role(value) in user.roles
 
@@ -127,7 +127,7 @@ on connected:
                   default: self.get_role(value) in user.roles
 
                 - label: Presonus Studio One
-                  emoji: 
+                  emoji: 1024240309628063784
                   value: 621827053288816651
                   default: self.get_role(value) in user.roles
 
@@ -137,27 +137,27 @@ on connected:
                   default: self.get_role(value) in user.roles
 
                 - label: Reaper
-                  emoji: 
+                  emoji: 1024240305387614208
                   value: 621827763392741378
                   default: self.get_role(value) in user.roles
 
                 - label: Reason
-                  emoji: 
+                  emoji: 1024240306738188299
                   value: 621827205160501248
                   default: self.get_role(value) in user.roles
 
                 - label: Sonar Platinum
-                  emoji: 
+                  emoji: 1083415646580260954
                   value: 733092879412756570
                   default: self.get_role(value) in user.roles
                   
                 - label: Tracktion
-                  emoji: 
+                  emoji: 1083415647939215440
                   value: 623203369095528471
                   default: self.get_role(value) in user.roles
                   
                 - label: Samplitude
-                  emoji: 
+                  emoji: 1024240308319432734
                   value: 976374487945723924
                   default: self.get_role(value) in user.roles
                 
@@ -193,7 +193,7 @@ on connected:
                   default: self.get_role(value) in user.roles
 
                 - label: Flat
-                  emoji: 
+                  emoji: 1083415649155567718
                   value: 733095013738610778
                   default: self.get_role(value) in user.roles
 
@@ -203,7 +203,7 @@ on connected:
                   default: self.get_role(value) in user.roles
                   
                 - label: Notion
-                  emoji: 
+                  emoji: 1083415651865067551
                   value: 720827393379663982
                   default: self.get_role(value) in user.roles
 
