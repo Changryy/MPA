@@ -163,7 +163,7 @@ on connected:
                 
                 - label: Other
                   description: Some DAW that no one knows because I'm special
-                  emoji: 
+                  emoji: 849657483659051018
                   value: 1082675271787884606
                   default: self.get_role(value) in user.roles
 
