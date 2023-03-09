@@ -10,6 +10,7 @@ variables:
   online_since:
 
   event_role: 1080050866914074676
+  pro_role: 622807181821214720
 
 
 # The intents the bot needs
@@ -212,6 +213,23 @@ on connected:
                   value: 622181501408116736
                   default: self.get_role(value) in user.roles
           
+            - select:
+                options:
+                - label: I am not an industry professional
+                  value: "no"
+                  default: self.get_role(pro_role) not in user.roles
+                - label: I am an industry professional
+                  value: "yes"
+                  default: self.get_role(pro_role) in user.roles
+                on interaction:
+                - defer:
+                - condition:
+                    if: "'yes' in values"
+                    do:
+                      add role: pro_role
+                    else:
+                      remove role: pro_role
+
             - condition:
                 if: self.get_role(event_role) not in user.roles
                 do:
