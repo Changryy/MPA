@@ -130,3 +130,7 @@ dmypy.json
 
 # Mac file
 .DS_Store
+
+
+*.json
+*.txt
